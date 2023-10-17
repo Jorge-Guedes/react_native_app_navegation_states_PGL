@@ -47,6 +47,7 @@ export const styles = StyleSheet.create({
       fontWeight:"bold",
     },
 
+    //MODAL PARA BLOQUEAR CONTENIDO SIN LOGUEARTE
     centeredView: {
       flex: 1,
       justifyContent: 'center',
@@ -75,10 +76,10 @@ export const styles = StyleSheet.create({
       elevation: 2,
     },
     buttonOpen: {
-      backgroundColor: '#F194FF',
+      backgroundColor: colors.darkGreen,
     },
     buttonClose: {
-      backgroundColor: '#2196F3',
+      backgroundColor: colors.darkGreen,
     },
     textStyle: {
       color: 'white',
@@ -89,5 +90,30 @@ export const styles = StyleSheet.create({
       marginBottom: 15,
       textAlign: 'center',
     },
+
+    //MODAL DE INICIO DE SESIÓN
+    containerModalLogin:{
+      flex: 1,
+      padding:15,
+      justifyContent:"center",
+      backgroundColor:"rgba(0,0,0,0.5)"
+    },
+    modalViewLogin:{
+      padding:20,
+      borderRadius:15,
+      backgroundColor: colors.lightGray,
+    },
+    /* credentialContainerModalLogin:{
+      
+    }, */
+    credentialFields:{
+      fontWeight:"bold",
+      padding:15,
+      justifyContent:"space-around",
+    },
+    buttonModalLoginContainer:{
+      flexDirection:"row",
+      justifyContent:"space-around",
+    }
   });
   
