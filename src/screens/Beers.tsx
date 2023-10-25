@@ -44,6 +44,12 @@ export const Beers = ({ route }: any) => {
   const endIndex = startIndex + pageElements;
   const visibleData = beersData.slice(startIndex, endIndex);
 
+  useEffect(() => {
+    if(!isLoginIn){
+      setPage(1);
+    }
+  }, [isLoginIn]);
+
   const nextPage = () => {
     if (page != totalPages && isLoginIn) {
       setPage(page + 1);
@@ -71,7 +77,7 @@ export const Beers = ({ route }: any) => {
 
   const showModalLogin = () => {
     console.log("Modal login abierto");
-    if(page!=totalPages){
+    if (page != totalPages) {
       setModalLoginVisible(true);
     }
   };
@@ -90,7 +96,9 @@ export const Beers = ({ route }: any) => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Debes iniciar sesión para ver el resto del contenido</Text>
+            <Text style={styles.modalText}>
+              Debes iniciar sesión para ver el resto del contenido
+            </Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalLoginVisible(!modalLoginVisible)}

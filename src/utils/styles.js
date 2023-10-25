@@ -103,9 +103,6 @@ export const styles = StyleSheet.create({
       borderRadius:15,
       backgroundColor: colors.lightGray,
     },
-    /* credentialContainerModalLogin:{
-      
-    }, */
     credentialFields:{
       fontWeight:"bold",
       padding:15,

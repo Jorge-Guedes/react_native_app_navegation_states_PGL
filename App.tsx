@@ -16,11 +16,7 @@ export default function App() {
 
   const login = useLoginStore((state) => state.login);
   const logout = useLoginStore((state) => state.logout);
-  const user = useLoginStore((state) => state.user);
-  const pass = useLoginStore((state) => state.pass);
   const isLoginIn = useLoginStore((state) => state.isLoggedIn);
-
-  let startApp= false;
 
   const [userText, setUserText] = useState("");
   const [passText, setPassText] = useState("");
@@ -29,52 +25,15 @@ export default function App() {
     setModalLoginVisible(true);
   };
 
-/*   const confirmLogin = () => {
-    login(userText, passText);
-    if (isLoginIn) {
-      console.log("Usuario iniciado con éxito");
-      showAlert("SESIÓN INICIADA", "Usuario iniciado con éxito");
-      setModalLoginVisible(false);
-    } else {
-      console.log("Usuario incorrecto");
-      showAlert("ERROR AL INICIAR", "Usuario o contraseña erróneos");
-    }
-  }; */
-
-  const confirmLogin=()=>{
-    login(userText, passText);
-    startApp=true;
-    console.log("confirm startApp: ",startApp);
-  }
-
   useEffect(() => {
-    console.log("startApp useEffect: ",startApp);
     if (isLoginIn) {
       console.log("Usuario iniciado con éxito");
       showAlert("SESIÓN INICIADA", "Usuario iniciado con éxito");
       setModalLoginVisible(false);
-      startApp=false;
-    }
-    else {
-      console.log("Else con startApp en: ",startApp);
-      if(startApp){
-        console.log("Usuario incorrecto");
-        showAlert("ERROR AL INICIAR", "Usuario o contraseña erróneos");
-        startApp=false;
-      }
+      setUserText("");
+      setPassText("");
     }
   }, [isLoginIn]);
-
-/*   useEffect(() => {
-    if (isLoginIn) {
-      console.log("Usuario iniciado con éxito");
-      showAlert("SESIÓN INICIADA", "Usuario iniciado con éxito");
-      setModalLoginVisible(false);
-    } else {
-      console.log("Usuario incorrecto");
-      showAlert("ERROR AL INICIAR", "Usuario o contraseña erróneos");
-    }
-  }, [isLoginIn]); */
 
   const showAlert = (tittle: string, description: string) => {
     Alert.alert(
@@ -91,7 +50,6 @@ export default function App() {
       { cancelable: false }
     );
   };
-
 
   return (
     <NavCon>
@@ -237,8 +195,7 @@ export default function App() {
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => {
-                  confirmLogin();
-                  //login(userText,passText);
+                  login(userText,passText);
                 }}
               >
                 <Text style={styles.textStyle}>Inciar Sesión</Text>
